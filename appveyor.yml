@@ -30,6 +30,7 @@ install:
   - "conda create -q -n testenv python=%PYTHON_VERSION% numpy pip cython matplotlib pytest"
   - "activate testenv"
   - "python -m pip install --upgrade pip"
+  - "pip install pypiwin32"
   # Install ephypype
   - "pip install -e ."
 
