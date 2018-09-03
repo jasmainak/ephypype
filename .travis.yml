@@ -19,6 +19,8 @@ matrix:
 
 
 before_install:
+    # See https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-to-Run-Tests-That-Require-a-GUI :
+    - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
     # Instal miniconda
     - if [ "${TRAVIS_OS_NAME}" == "linux" ]; then
         wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
@@ -36,7 +38,7 @@ before_install:
 
 install:
     # Create the python environment ;
-    - conda create -q -n testenv python=$TRAVIS_PYTHON_VERSION numpy pip cython matplotlib;
+    - conda create -q -n testenv python=$TRAVIS_PYTHON_VERSION numpy pip cython matplotlib pyqt5;
     - source activate testenv
     # Testing dependencies
     - pip install codecov pytest pytest-cov;
