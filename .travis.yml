@@ -3,6 +3,8 @@ language: python
 cache:
   pip: true
   apt: true
+  directories:
+  - ~/mne_data/
 
 sudo: false
 dist: trusty
