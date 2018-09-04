@@ -1,7 +1,9 @@
+import matplotlib
+matplotlib.use('Agg')  # for testing don't use X server
+
 import mne
 
 from ephypype.power import compute_and_save_psd
-
 
 data_path = mne.datasets.sample.data_path()
 raw_fname = data_path + '/MEG/sample/sample_audvis_filt-0-40_raw.fif'
